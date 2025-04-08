@@ -1,0 +1,10 @@
+# Cosas que nunca debes subir
+node_modules/
+dist/
+.DS_Store
+.env
+*.log
+
+# Evita commits raros
+.vscode/
+pacientes/
