@@ -62,6 +62,15 @@ const validar = () => {
     return;
   }
   emit("guardar-datos");
+  alerta.mensaje = "PACIENTE GUARDADO CORRECTAMENTE";
+  alerta.tipo = "sucess";
+  console.log("aplica el sucess");
+  setTimeout(() => {
+    Object.assign(alerta, {
+      tipo: "",
+      mensaje: "",
+    });
+  }, 3000);
 };
 </script>
 
