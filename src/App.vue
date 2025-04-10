@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, watch, onMounted } from "vue";
 import Header from "./components/Header.vue";
 import Formulario from "./components/Formulario.vue";
 import Paciente from "./components/Paciente.vue";
@@ -13,6 +13,27 @@ const datos = reactive({
   email: "",
   alta: "",
   sintomas: "",
+});
+
+watch(
+  pacientes,
+  () => {
+    guardarLocalStore();
+  },
+  {
+    deep: true,
+  }
+);
+
+const guardarLocalStore = () => {
+  localStorage.setItem("pacientes", JSON.stringify(pacientes.value));
+};
+
+onMounted(() => {
+  const pacientesStorage = localStorage.getItem("pacientes");
+  if (pacientesStorage) {
+    pacientes.value = JSON.parse(pacientesStorage);
+  }
 });
 
 const guardarDatos = (id) => {
@@ -54,6 +75,12 @@ const editarDatos = (id) => {
   Object.assign(datos, pacienteEditado);
   console.log("editarDatoPaciente", id);
 };
+
+const eliminarPaciente = (id) => {
+  pacientes.value = pacientes.value.filter((paciente) => paciente.id !== id);
+
+  console.log("llegando el = " + id);
+};
 </script>
 <template>
   <div class="container mx-auto mt-20">
@@ -67,6 +94,7 @@ const editarDatos = (id) => {
         v-model:alta="datos.alta"
         v-model:sintomas="datos.sintomas"
         @guardar-datos="guardarDatos"
+        :id="datos.id"
       />
 
       <div class="md:w-1/2 md:h-screen overflow-y-scroll">
@@ -78,6 +106,7 @@ const editarDatos = (id) => {
             v-for="paciente in pacientes"
             :paciente="paciente"
             @editar-datos="editarDatos"
+            @eliminar-paciente="eliminarPaciente"
           />
         </div>
         <p v-else class="mt-10 text-2xl text-center">Esto es un desierto 😒</p>
