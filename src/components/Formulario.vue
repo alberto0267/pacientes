@@ -84,10 +84,10 @@ const validar = () => {
 
 <template>
   <div class="md:w-1/2">
-    <h2 class="font-bold text-center">Seguimiento Pacientes</h2>
+    <h2 class="font-bold text-center">Tareas</h2>
     <p class="text-lg mt-5 mb-10 text-center">
-      Añade pacientes y
-      <span class="text-indigo-600 font-bold">Administralos</span>
+      Añade tares y
+      <span class="text-indigo-600 font-bold">Administralas</span>
     </p>
 
     <Alerta v-if="alerta.mensaje" :alerta="alerta" />
@@ -98,7 +98,7 @@ const validar = () => {
     >
       <div class="mb-5">
         <label for="mascota" class="block text-gray-700 uppercase font-bold"
-          >Nombre Mascota</label
+          >Nombre Tarea</label
         >
         <input
           type="text"
@@ -112,7 +112,7 @@ const validar = () => {
 
       <div class="mb-5">
         <label for="propietario" class="block text-gray-700 uppercase font-bold"
-          >NOMBRE PROPIETARIO</label
+          >NOMBRE RESPONSABLE</label
         >
         <input
           type="text"
@@ -126,7 +126,7 @@ const validar = () => {
 
       <div class="mb-5">
         <label for="email" class="block text-gray-700 uppercase font-bold"
-          >EMAIL</label
+          >EMAIL DEl RESPONSABLE</label
         >
         <input
           type="email"
@@ -140,21 +140,22 @@ const validar = () => {
 
       <div class="mb-5">
         <label for="alta" class="block text-gray-700 uppercase font-bold"
-          >ALTA</label
+          >FECHA CREADA</label
         >
         <input
           type="date"
           id="alta"
-          placeholder=""
+          placeholder="alta"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
           @input="$emit('update:alta', $event.target.value)"
           :value="alta"
+          readonly
         />
       </div>
 
       <div class="mb-5">
         <label for="sintomas" class="block text-gray-700 uppercase font-bold"
-          >SINTOMAS</label
+          >DESCRIPCION TAREA</label
         >
         <textarea
           id="sintomas"

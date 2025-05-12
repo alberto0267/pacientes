@@ -18,13 +18,13 @@ defineEmits("editar-datos", "eliminar-paciente");
     </p>
 
     <p class="font-bold mb-3 text-gray-700 uppercase">
-      Nombre:
+      Nombre Tarea:
       {{ paciente.nombre }}
       <span class="font-normal normal-case"> </span>
     </p>
 
     <p class="font-bold mb-3 text-gray-700 uppercase">
-      Propietario:
+      Nombre Responsable:
       {{ paciente.propietario }}
       <span class="font-normal normal-case"> </span>
     </p>
@@ -42,7 +42,7 @@ defineEmits("editar-datos", "eliminar-paciente");
     </p>
 
     <p class="font-bold mb-3 text-gray-700 uppercase">
-      Sintomas:
+      Descripcion:
       {{ paciente.sintomas }}
       <span class="font-normal normal-case"> </span>
     </p>

@@ -11,7 +11,7 @@ const datos = reactive({
   nombre: "",
   propietario: "",
   email: "",
-  alta: "",
+  alta: new Date().toLocaleDateString("en-CA"),
   sintomas: "",
 });
 
@@ -61,7 +61,7 @@ const guardarDatos = (id) => {
     nombre: "", // Limpiamos el campo nombre del formulario
     propietario: "", // Limpiamos el campo propietario
     email: "", // Limpiamos el campo email
-    alta: "", // Limpiamos la fecha de alta
+    // alta: "", // Limpiamos la fecha de alta
     sintomas: "", // Limpiamos los síntomas
     // En resumen: reiniciamos todo el formulario para dejarlo listo para un nuevo registro
   });
@@ -98,9 +98,7 @@ const eliminarPaciente = (id) => {
       />
 
       <div class="md:w-1/2 md:h-screen overflow-y-scroll">
-        <h3 class="font-black text-3xl text-center">
-          Administra tus pacientes
-        </h3>
+        <h3 class="font-black text-3xl text-center">Lista de Tareas</h3>
         <div v-if="pacientes.length > 0">
           <paciente
             v-for="paciente in pacientes"
